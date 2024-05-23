@@ -6,12 +6,22 @@
     <title>Calculator</title>
   </head>
   <body>
-    <input type="number" placeholder="First number" id="one" /><br /><br />
+    <input
+      oninput="debnouncePopulateDiv()"
+      type="number"
+      placeholder="First number"
+      id="one"
+    /><br /><br />
 
-    <input type="number" placeholder="Second number" id="two" /><br /><br />
+    <input
+      oninput="debnouncePopulateDiv()"
+      type="number"
+      placeholder="Second number"
+      id="two"
+    /><br /><br />
 
-    <button onclick="populateDiv()">Add Sum</button>
-    
+    <!-- <button onclick="populateDiv()">Add Sum</button> -->
+
     <div id="finalSum"></div>
     <script src="script.js"></script>
   </body>
