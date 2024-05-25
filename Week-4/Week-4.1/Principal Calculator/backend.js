@@ -1,31 +1,25 @@
 const express = require("express");
+const cors = require("cors");
+const path = require("path");
 const app = express();
 const port = 4000;
 
 app.use(express.json());
+app.use(cors());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
-app.post("/calculate", (req, res) => {
-  const { principal, rate, time } = req.query;
 
-  const principalVal = parseFloat(principal);
-  const rateVal = parseFloat(rate);
-  const timeVal = parseFloat(time);
+app.get("/principal", (req, res) => {
+  const principal = parseInt(req.query.principal);
+  const rate = parseInt(req.query.rate);
+  const time = parseInt(req.query.time);
 
-  if (isNaN(principalVal) || isNaN(rateVal) || isNaN(timeVal)) {
-    return res
-      .status(400)
-      .json({ error: "Invalid input values. Please enter numbers." });
-  }
-
-  const interest = (principalVal * rateVal * timeVal) / 100;
-
-  res.json({
-    principal: principalVal,
-    interest: interest,
-  });
+  const calculation = (principal * rate * time) / 100;
+  res.send(calculation.toString());
 });
 
 app.listen(port, function () {

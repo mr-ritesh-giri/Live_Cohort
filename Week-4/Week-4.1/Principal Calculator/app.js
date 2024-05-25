@@ -6,21 +6,29 @@ function debouncingCalculate() {
     calculate();
   }, 1000);
 }
-
 async function calculate() {
-  const principal = parseInt(document.getElementById("principal").value);
-  const rate = parseInt(document.getElementById("rate").value);
-  const time = parseInt(document.getElementById("time").value);
+  const principalInput = document.getElementById("principal").value.trim();
+  const rateInput = document.getElementById("rate").value.trim();
+  const timeInput = document.getElementById("time").value.trim();
   const ans = document.getElementById("ans");
 
-  // if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
-  //   ans.innerHTML = "Please enter valid numeric values for all fields.";
-  //   return;
-  // }
+  if (principalInput === "" || rateInput === "" || timeInput === "") {
+    ans.innerHTML = "Please enter valid numeric values for all fields.";
+    return;
+  }
+
+  const principal = parseInt(principalInput);
+  const rate = parseInt(rateInput);
+  const time = parseInt(timeInput);
+
+  if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+    ans.innerHTML = "Please enter valid numeric values for all fields.";
+    return;
+  }
 
   try {
     const response = await fetch(
-      `http://localhost:4000/calculate?principal=${principal}&rate=${rate}&time=${time}`
+      `http://localhost:4000?principal=${principal}&rate=${rate}&time=${time}`
     );
 
     if (!response.ok) {
@@ -33,5 +41,3 @@ async function calculate() {
     ans.innerHTML = `Error: ${error.message}`;
   }
 }
-
-// `https://sum-server.100xdevs.com/interest?principal=${principal}&rate=${rate}&time=${time}`
