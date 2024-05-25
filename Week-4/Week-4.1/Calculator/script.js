@@ -11,7 +11,7 @@ async function populateDiv() {
   const a = parseInt(document.getElementById("one").value);
   const b = parseInt(document.getElementById("two").value);
 
-  await fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b).then(
+  await fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`).then(
     function (response) {
       console.log(response);
       response.text().then(function (ans) {
