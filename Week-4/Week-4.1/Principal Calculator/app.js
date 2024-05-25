@@ -1,11 +1,13 @@
 let timeout;
+
 function debouncingCalculate() {
-  clearInterval(timeout);
+  clearTimeout(timeout); // Use clearTimeout instead of clearInterval
 
   timeout = setTimeout(() => {
     calculate();
   }, 1000);
 }
+
 async function calculate() {
   const principalInput = document.getElementById("principal").value.trim();
   const rateInput = document.getElementById("rate").value.trim();
@@ -28,7 +30,7 @@ async function calculate() {
 
   try {
     const response = await fetch(
-      `http://localhost:4000?principal=${principal}&rate=${rate}&time=${time}`
+      `http://localhost:4000/principal?principal=${principal}&rate=${rate}&time=${time}`
     );
 
     if (!response.ok) {

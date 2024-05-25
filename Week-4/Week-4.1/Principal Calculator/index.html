@@ -3,25 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Principal Rate Calculator</title>
+    <title>Financial Calculator</title>
   </head>
   <body>
-    <form action="interestForm">
-      <!-- <label for="principal">Principal:</label> -->
-      <input
-        oninput="debouncingCalculate()"
-        id="principal"
-        placeholder="Principal..."
-      />
-      <br /><br />
-      <!-- <label for="rate">Rate:</label> -->
-      <input oninput="debouncingCalculate()" id="rate" placeholder="Rate..." />
-      <br /><br />
-      <!-- <label for="time">Time:</label> -->
-      <input oninput="debouncingCalculate()" id="time" placeholder="Time..." />
-      <br /><br />
-      <div id="ans"></div>
-    </form>
+    <div>
+      <label for="principal">Principal:</label>
+      <input type="text" id="principal" oninput="debouncingCalculate()" />
+    </div>
+    <div>
+      <label for="rate">Rate (%):</label>
+      <input type="text" id="rate" oninput="debouncingCalculate()" />
+    </div>
+    <div>
+      <label for="time">Time (years):</label>
+      <input type="text" id="time" oninput="debouncingCalculate()" />
+    </div>
+    <div id="ans"></div>
+
     <script src="app.js"></script>
   </body>
 </html>
