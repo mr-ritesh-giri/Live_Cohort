@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Calculator</title>
+  </head>
+  <body>
+    <div>
+      <label for="principal">Principal:</label>
+      <input
+        type="text"
+        id="principal"
+        oninput="debouncingCalculate()"
+        placeholder="Principal"
+      />
+    </div>
+    <div>
+      <label for="rate">Rate (%):</label>
+      <input
+        type="text"
+        id="rate"
+        oninput="debouncingCalculate()"
+        placeholder="rate"
+      />
+    </div>
+    <div>
+      <label for="time">Time (years):</label>
+      <input
+        type="text"
+        id="time"
+        oninput="debouncingCalculate()"
+        placeholder="time"
+      />
+    </div>
+    <div id="ans"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
