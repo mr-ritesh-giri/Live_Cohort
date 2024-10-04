@@ -1,33 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-function App() {
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    fetch("https://sum-server.100xdevs.com/todos").then(async (res) => {
-      const json = await res.json();
-      setTodos(json.todos);
-    });
-  }, []);
-
-  return (
-    <div>
-      {todos.map(({ title, description }) => (
-        <Todo title={title} description={description} />
-      ))}
-    </div>
-  );
-}
-
-function Todo({ title, description }) {
-  return (
-    <div>
-      <h2>{title}</h2>
-      <h5>{description}</h5>
-    </div>
-  );
-}
+function App() {}
 
 export default App;
 
@@ -172,3 +146,33 @@ export default App;
 //     </div>
 //   );
 // }
+
+// Another Code
+
+// function App4() {
+  //   const [todos, setTodos] = useState([]);
+  
+  //   useEffect(() => {
+  //     fetch("https://sum-server.100xdevs.com/todos").then(async (res) => {
+  //       const json = await res.json();
+  //       setTodos(json.todos);
+  //     });
+  //   }, []);
+  
+  //   return (
+  //     <div>
+  //       {todos.map((todo) => (
+  //         <Todo title={todo.title} description={todo.description} />
+  //       ))}
+  //     </div>
+  //   );
+  // }
+  
+  // function Todo({ title, description }) {
+  //   return (
+  //     <div>
+  //       <h2>{title}</h2>
+  //       <h5>{description}</h5>
+  //     </div>
+  //   );
+  // }
